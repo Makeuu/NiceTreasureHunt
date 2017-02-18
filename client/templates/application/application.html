@@ -1,9 +1,11 @@
 <template name="layout">
+  <link rel="stylesheet" href="http://www.w3ii.com/lib/w3.css">
 	{{>header}}
 	<div  class="w3-container w3-padding-64">
 		{{#if currentUser}}
 			{{> yield}}
 		{{else}}
+      {{> register}}
 			{{> login}}
 		{{/if}}
     </div>
