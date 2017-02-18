@@ -1,8 +1,10 @@
 <template name="layout">
-  <div>
-  	Ici le layout
-  </div>
-  <div>
-  	{{>yield}}
-  </div>
+	{{>header}}
+	<div  class="w3-container w3-padding-64">
+		{{#if currentUser}}
+			{{> yield}}
+		{{else}}
+			{{> login}}
+		{{/if}}
+    </div>
 </template>

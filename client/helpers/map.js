@@ -4,7 +4,7 @@ Template.map.onRendered(function (){
   if (Meteor.isClient) {
     L.Icon.Default.imagePath = '/packages/bevanhunt_leaflet/images/';
     
-    map = L.map('map').setView([51.505, -0.09], 13);
+    map = L.map('map').setView([43.7, 7.25], 13);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
