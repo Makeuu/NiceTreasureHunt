@@ -12,9 +12,7 @@ Template.map.onRendered(function (){
       tracks[Loc[l].userID] = L.marker(Loc[l].last).addTo(map);
     }
 
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    L.tileLayer.provider("OpenStreetMap.France").addTo(map);
 
     map.locate({watch: true, setView : true});
     map.on('locationfound', onLocationFound);
