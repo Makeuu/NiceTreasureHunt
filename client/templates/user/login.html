@@ -1,7 +1,13 @@
 <template name="login">
-    <form class="w3-container">
-        <input type="email" class="w3-input" name="loginEmail" required>
-        <input type="password" class="w3-input" name="loginPassword" required>
-        <input type="submit" class="w3-btn" value="Login">
+    <form class="w3-row-padding">
+    	<div class="w3-third">
+        	<input type="email" class="w3-input w3-border-bottom w3-border-teal" name="loginEmail" placeholder="E-Mail" required>
+    	</div>
+    	<div class="w3-third">
+        	<input type="password" class="w3-input w3-border-bottom w3-border-teal" name="loginPassword" placeholder="Mot de passe" required>
+    	</div>
+    	<div class="w3-third">
+        	<input type="submit" class="w3-btn w3-teal" value="Connexion">
+    	</div>
     </form>
 </template>

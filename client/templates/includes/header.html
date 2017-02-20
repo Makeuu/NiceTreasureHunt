@@ -8,6 +8,8 @@
 				{{#if currentUser}}
 					<a href="{{pathFor 'map'}}" class="w3-left w3-hover-teal">Map</a>
 					<a href="#" class="w3-left w3-hover-teal">Etc...</a>
+				{{else}}
+					{{> login}}
 				{{/if}}
 			</li>
 		</ul>
