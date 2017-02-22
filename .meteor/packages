@@ -24,3 +24,5 @@ bevanhunt:leaflet
 mdg:geolocation
 accounts-ui
 accounts-password
+appshore:leaflet-awesome-markers
+fortawesome:fontawesome
