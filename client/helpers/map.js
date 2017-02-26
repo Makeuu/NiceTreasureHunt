@@ -12,7 +12,7 @@ Template.map.onRendered(function (){
     map = L.map('map');
     var Loc = LocData.find().fetch();
     for(var l in Loc){
-      console.log(Loc[l]);
+      /*console.log(Loc[l]);*/
       //tracks[Loc[l].userID] = L.marker(Loc[l].last).addTo(map);
       var style_mapicon = L.AwesomeMarkers.icon({ 
         prefix:'fa',
@@ -82,7 +82,7 @@ Template.map.onRendered(function (){
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
     
-    console.log(e.latlng);
+    /*console.log(e.latlng);*/
     
     Meteor.call('LocUpdate', e.latlng, function(error, result) {
     // affiche l'erreur à l'utilisateur et s'interrompt

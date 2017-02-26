@@ -1,17 +1,17 @@
 <template name="header">
 	<div class="w3-top">
-		<ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
-			<li>
-				<a href="{{pathFor 'index'}}" class="w3-margin-left w3-hover-teal">Nice treasure Hunt</a>
-			</li>
-			<li class="w3-right w3-hide-small">
-				{{#if currentUser}}
-					<a href="{{pathFor 'map'}}" class="w3-left w3-hover-teal">Map</a>
-					<a href="#" class="w3-left w3-hover-teal">Etc...</a>
-				{{else}}
-					{{> login}}
-				{{/if}}
-			</li>
-		</ul>
+		<div class="w3-bar w3-white w3-card-4">
+			<a class="w3-bar-item w3-button w3-mobile w3-hover-teal" href="{{pathFor 'index'}}">Nice treasure Hunt</a>
+
+			<div class="w3-hide-small">
+			{{#if currentUser}}
+				<a class="w3-bar-item w3-button w3-mobile w3-hover-teal" href="{{pathFor 'map'}}">Map</a>
+				<a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal">Etc...</a>
+				{{> logout}}
+			{{else}}
+				{{> login}}
+			{{/if}}
+			</div>
+		</div>
 	</div>
 </template>
