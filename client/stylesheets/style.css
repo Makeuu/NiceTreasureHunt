@@ -3,6 +3,21 @@
     margin-top : 8px;
 }
 
+.awesome-marker i {
+    font-size : 18px;
+    margin-top : 8px;
+}
+
+#header {
+	z-index: 10000;
+}
+
+/* only when user */
+#user-padding {
+	padding-top: 40px;
+}
+
+/* Only when no user */
 #content-padding {
 	padding-top: 64px;
 }

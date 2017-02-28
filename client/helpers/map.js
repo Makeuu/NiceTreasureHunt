@@ -5,6 +5,13 @@ var initView = false;
 
 Template.map.onRendered(function (){
   if (Meteor.isClient) {
+
+    resizeMap();
+
+    window.onresize = function() {
+      resizeMap();
+    };
+
     initView = true;
     
     L.Icon.Default.imagePath = '/packages/bevanhunt_leaflet/images/';
@@ -76,6 +83,8 @@ Template.map.onRendered(function (){
     map.on('locationerror', onLocationError);
     
     geoLoop();
+
+
   }
 })
 
@@ -117,4 +126,22 @@ var geoLoop = function() {
 
 function onLocationError(e) {
     console.error(e.message);
+}
+
+function resizeMap() {
+  var w = window.innerWidth;
+  var h = window.innerHeight-40;
+  var newDimW = 0;
+  var newDimH = 0;
+
+  if(w <= 600) {
+    newDimW = w;
+    newDimH = h;
+  } else {
+    newDimW = w/2;
+    newDimH = h-18.233;
+  }
+
+  document.querySelector("#map").style.width = newDimW + "px";
+  document.querySelector("#map").style.height = newDimH + "px";
 }

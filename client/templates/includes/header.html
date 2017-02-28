@@ -1,5 +1,5 @@
 <template name="header">
-	<div class="w3-top">
+	<div class="w3-top" id="header">
 		<div class="w3-bar w3-white w3-card-4">
 			<!-- Navbar -->
 			<div class="w3-hide-medium w3-hide-large">
@@ -8,21 +8,41 @@
 				  <a href="javascript:void(0)" onclick="w3_close()" 
 				  class="w3-closenav w3-large w3-hide-large">Close &times;</a>
 				{{#if currentUser}}
-					<a class="w3-bar-item w3-button w3-mobile w3-hover-teal" href="{{pathFor 'map'}}" onclick="w3_close()">Map</a>
-					<a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal" onclick="w3_close()">Etc...</a>
+					<!-- Right align -->
 					{{> logout}}
+					<a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-right">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						Profile
+					</a>
+
+					<!-- Normal link -->
+					<a class="w3-bar-item w3-button w3-mobile w3-hover-teal" href="{{pathFor 'map'}}" onclick="w3_close()">
+						<i class="fa fa-map" aria-hidden="true"></i>
+						Map
+					</a>
+					<a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal" onclick="w3_close()">Etc...</a>
 				{{/if}}
 				</nav>
 			</div>
 
-  				<span class="w3-opennav w3-hide-medium w3-hide-large w3-bar-item" onclick="w3_open()">&#9776;</span>
-				<a class="w3-bar-item w3-button w3-hover-teal" href="{{pathFor 'index'}}">Nice treasure Hunt</a>
+			<span class="w3-opennav w3-hide-medium w3-hide-large w3-bar-item" onclick="w3_open()">&#9776;</span>
+			<a class="w3-bar-item w3-button w3-hover-teal" href="{{pathFor 'index'}}">Nice treasure Hunt</a>
 
 			<div class="w3-hide-small">
 				{{#if currentUser}}
-					<a class="w3-bar-item w3-button w3-mobile w3-hover-teal" href="{{pathFor 'map'}}">Map</a>
-					<a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal">Etc...</a>
+					<!-- Right align -->
 					{{> logout}}
+					<a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-right">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						Profile
+					</a>
+					
+					<!-- Normal link -->
+					<a class="w3-bar-item w3-button w3-mobile w3-hover-teal" href="{{pathFor 'map'}}">
+						<i class="fa fa-map" aria-hidden="true"></i>
+						Map
+					</a>
+					<a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal">Etc...</a>
 				{{else}}
 					{{> login}}
 				{{/if}}
