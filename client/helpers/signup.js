@@ -1,4 +1,4 @@
-Template.register.events({
+Template.signup.events({
     'submit form': function(event){
         event.preventDefault();
         var emailVar = event.target.registerEmail.value;
@@ -8,5 +8,6 @@ Template.register.events({
           email: emailVar,
           password: passwordVar
         })
+        this.redirect('/index');
     }
 });

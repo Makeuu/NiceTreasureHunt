@@ -12,18 +12,7 @@
 	z-index: 10000;
 }
 
-/* only when user */
+/* only when user is connected*/
 #user-padding {
 	padding-top: 40px;
-}
-
-/* Only when no user */
-#content-padding {
-	padding-top: 64px;
-}
-
-@media screen and (max-width: 690px) and (min-width: 601px) {
-	#content-padding {
-		padding-top: 128px;
-	}
 }
