@@ -1,9 +1,10 @@
-//Meteor.users.remove({});
+Meteor.users.remove({});
 if (Meteor.users.find().count() === 0) {
-    var idUser = Accounts.createUser({
+    Accounts.createUser({
         email : "root@root.fr",
-        password : "root"
+        password : "root",
+        profile:  {
+            role: "admin"
+        }
     });
-    var user = Meteor.users.findOne({_id: idUser});
-    user.role = "admin";
 }

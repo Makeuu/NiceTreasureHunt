@@ -1,5 +1,5 @@
 Template.header.helpers ({
     "isAdmin" : function() {
-        return Meteor.user().role=="admin";
+        return Meteor.user().profile.role==="admin";
     },
 });
