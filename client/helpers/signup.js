@@ -7,7 +7,6 @@ Template.signup.events({
         Accounts.createUser({
           email: emailVar,
           password: passwordVar
-        })
-        this.redirect('/index');
+        });
     }
 });

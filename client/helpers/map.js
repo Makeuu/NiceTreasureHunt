@@ -5,7 +5,6 @@ var initView = false;
 
 Template.map.onRendered(function (){
   if (Meteor.isClient) {
-
     resizeMap();
 
     window.onresize = function() {
@@ -13,18 +12,18 @@ Template.map.onRendered(function (){
     };
 
     initView = true;
-    
+
     L.Icon.Default.imagePath = '/packages/bevanhunt_leaflet/images/';
-    
+
     map = L.map('map');
     var Loc = LocData.find().fetch();
     for(var l in Loc){
       /*console.log(Loc[l]);*/
       //tracks[Loc[l].userID] = L.marker(Loc[l].last).addTo(map);
-      var style_mapicon = L.AwesomeMarkers.icon({ 
+      var style_mapicon = L.AwesomeMarkers.icon({
         prefix:'fa',
         icon: 'android',
-        markerColor:'green', 
+        markerColor:'green',
         spin: false,
         iconColor:"white"
       });
@@ -32,8 +31,7 @@ Template.map.onRendered(function (){
     }
 
     L.tileLayer.provider("OpenStreetMap.France").addTo(map);
-    
-    
+
     // custom zoom bar control that includes a Zoom Home function
     L.Control.zoomHome = L.Control.extend({
         options: {
@@ -74,17 +72,12 @@ Template.map.onRendered(function (){
     // add the new control to the map
     var zoomHome = new L.Control.zoomHome();
     zoomHome.addTo(map);
-    
-    
-    
-    
+
     map.locate({watch : true});
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
-    
+
     geoLoop();
-
-
   }
 })
 
