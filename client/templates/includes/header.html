@@ -1,101 +1,106 @@
 <template name="header">
-	<div class="w3-top" id="header">
-		<div class="w3-bar w3-white w3-card-2">
-			<!-- Sidebar Navigation -->
-			<div class="w3-hide-medium w3-hide-large">
-				<nav class="w3-sidenav w3-collapse w3-white w3-card-2 w3-animate-left"
-						style="width:150px;" id="mySidenav">
-				  <a href="javascript:void(0)" onclick="w3_close()" 
-				  class="w3-closenav w3-hide-large w3-hover-black">Close &times;</a>
-				{{#if currentUser}}
-                    {{#if isAdmin}}
-                        <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                           href="#" onclick="w3_close()">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            Je suis admin
-                        </a>
+    <div class="w3-top" id="header">
+        <div class="w3-bar w3-white w3-card-2">
+            <!-- Sidebar Navigation -->
+            <div class="w3-hide-medium w3-hide-large">
+                <nav class="w3-sidenav w3-collapse w3-white w3-card-2 w3-animate-left"
+                     style="width:150px;" id="mySidenav">
+                    <a href="javascript:void(0)" onclick="w3_close()"
+                       class="w3-closenav w3-hide-large w3-hover-black">Close &times;</a>
+                    {{#if currentUser}}
+                        {{#if isAdmin}}
+                            <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                               href="#" onclick="w3_close()">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Je suis admin
+                            </a>
+                        {{else}}
+                            <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                               href="{{pathFor 'map'}}" onclick="w3_close()">
+                                <i class="fa fa-map" aria-hidden="true"></i>
+                                Map
+                            </a>
+                            <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                               href="#" onclick="w3_close()">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Profile
+                            </a>
+                            <a href="#" class="w3-mobile w3-white w3-hover-amber w3-text-amber w3-hover-text-white"
+                               id="logout" onclick="w3_close()">
+                                <i class="fa fa-sign-out " aria-hidden="true"></i>
+                                Logout
+                            </a>
+                        {{/if}}
                     {{else}}
-                        <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                           href="{{pathFor 'map'}}" onclick="w3_close()">
-                            <i class="fa fa-map" aria-hidden="true"></i>
-                            Map
+                        <a class="w3-mobile w3-teal w3-border w3-border-teal w3-hover-white"
+                           href="{{pathFor 'login'}}" onclick="w3_close()">
+                            Login
                         </a>
-                        <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                           href="#" onclick="w3_close()">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            Profile
-                        </a>
-                        <a href="#" class="w3-mobile w3-white w3-hover-amber w3-text-amber w3-hover-text-white"
-                           id="logout" onclick="w3_close()">
-                            <i class="fa fa-sign-out " aria-hidden="true"></i>
-                            Logout
+                        <a class="w3-mobile w3-amber w3-border w3-border-amber w3-hover-white"
+                           href="{{pathFor 'signup'}}" onclick="w3_close()">
+                            Sign Up
                         </a>
                     {{/if}}
-                {{else}}
-                    <a class="w3-mobile w3-teal w3-border w3-border-teal w3-hover-white"
-                       href="{{pathFor 'login'}}" onclick="w3_close()">
-                        Login
-                    </a>
-                    <a class="w3-mobile w3-amber w3-border w3-border-amber w3-hover-white"
-                       href="{{pathFor 'signup'}}" onclick="w3_close()">
-                        Sign Up
-                    </a>
-				{{/if}}
-				</nav>
-			</div>
+                </nav>
+            </div>
 
-			<span class="w3-opennav w3-hide-medium w3-hide-large w3-bar-item" onclick="w3_open()">&#9776;</span>
-			<a class="w3-bar-item w3-button w3-hover-teal w3-text-teal w3-hover-text-white w3-wide"
+            <span class="w3-opennav w3-hide-medium w3-hide-large w3-bar-item" onclick="w3_open()">&#9776;</span>
+            <a class="w3-bar-item w3-button w3-hover-teal w3-text-teal w3-hover-text-white w3-wide"
                href="{{pathFor 'index'}}" id="accueil">
                 Nice treasure Hunt
             </a>
 
             <!-- Normal Navigation -->
-			<div class="w3-hide-small">
-				{{#if currentUser}}
+            <div class="w3-hide-small">
+                {{#if currentUser}}
                     {{#if isAdmin}}
                         <!-- Right align -->
-                        <a href="#" class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
+                        <a href="#"
+                           class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
                            id="logout" onclick="w3_close()">Logout</a>
                         <!-- Normal link -->
-                        <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white" href="{{pathFor 'map'}}">
+                        <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                           href="{{pathFor 'map'}}">
                             Je suis admin
                         </a>
                     {{else}}
                         <!-- Right align -->
-                        <a href="#" class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
+                        <a href="#"
+                           class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
                            id="logout" onclick="w3_close()">Logout</a>
-                        <a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-right w3-text-teal w3-hover-text-white">
+                        <a href="#"
+                           class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-right w3-text-teal w3-hover-text-white">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             Profile
                         </a>
 
                         <!-- Normal link -->
-                        <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white" href="{{pathFor 'map'}}">
+                        <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                           href="{{pathFor 'map'}}">
                             <i class="fa fa-map" aria-hidden="true"></i>
                             Map
                         </a>
                     {{/if}}
-				{{else}}
+                {{else}}
                     <a class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
-                            href="{{pathFor 'signup'}}">
+                       href="{{pathFor 'signup'}}">
                         Sign Up
                     </a>
                     <a class="w3-bar-item w3-button w3-teal w3-border w3-border-teal w3-right w3-hover-white"
-                            href="{{pathFor 'login'}}">
+                       href="{{pathFor 'login'}}">
                         Login
                     </a>
                 {{/if}}
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
-	<script>
-		function w3_open() {
-		    document.getElementById("mySidenav").style.display = "block";
-		}
-		function w3_close() {
-		    document.getElementById("mySidenav").style.display = "none";
-		}
-	</script>
+    <script>
+        function w3_open() {
+            document.getElementById("mySidenav").style.display = "block";
+        }
+        function w3_close() {
+            document.getElementById("mySidenav").style.display = "none";
+        }
+    </script>
 </template>

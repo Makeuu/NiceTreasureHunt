@@ -1,4 +1,4 @@
-import { Meteor } from 'meteor/meteor';
+import {Meteor} from 'meteor/meteor';
 
 Accounts.onCreateUser(function (options, user) {
     user.color = "#F44336";
@@ -15,5 +15,4 @@ Accounts.onCreateUser(function (options, user) {
 });
 
 Meteor.startup(() => {
-
 });
