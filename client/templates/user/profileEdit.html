@@ -1,0 +1,27 @@
+<template name="profileEdit">
+    <form class="w3-row-padding w3-small">
+        <div class="w3-col m4 w3-card-4">
+            <img src="" class="w3-circle" alt="Je suis une image"/>
+        </div>
+        <div class="w3-col m8 w3-col">
+            <div class="w3-text-teal">
+                <label class="">Nom d'utilisateur</label>
+                <input name="username" type="text" value="{{profileUser.username}}" placeholder="Nom d'utilisateur"
+                       class="w3-input w3-border-bottom w3-border-teal"/>
+                <label class="">E-Mail</label>
+                <input name="email" type="text" value="{{profileUser.email}}" placeholder="Adresse mail"
+                       class="w3-input w3-border-bottom w3-border-teal"/>
+                <label class="">Color</label>
+                <input name="color" type="text" value="{{profileUser.color}}" placeholder="Couleur"
+                       class="w3-input w3-border-bottom w3-border-teal"/>
+                <label class="">Mot de passe</label>
+                <input name="password" type="password" value="" placeholder="Mot de passe"
+                       class="w3-input w3-border-bottom w3-border-teal"/>
+
+                <div class="w3-right">
+                    <input type="submit" class="w3-btn w3-teal" value="Enregistrer">
+                </div>
+            </div>
+        </div>
+    </form>
+</template>

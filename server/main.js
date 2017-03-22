@@ -2,6 +2,7 @@ import {Meteor} from 'meteor/meteor';
 
 Accounts.onCreateUser(function (options, user) {
     user.color = "#F44336";
+    user.username = user.emails[0].address;
 
     if (options.profile) {
         user.profile = options.profile;
