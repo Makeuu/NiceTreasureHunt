@@ -10,4 +10,12 @@ if (Meteor.users.find().count() === 0) {
             role: "admin"
         }
     });
+    Accounts.createUser({
+        email: "gest@gest.fr",
+        password: "gest",
+        profile: {
+            role: "gest"
+        }
+    });
 }
+

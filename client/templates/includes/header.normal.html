@@ -1,33 +1,46 @@
 <template name="headerNormal">
     <div class="w3-hide-small">
         {{#if currentUser}}
-            {{#if isAdmin}}
-                <!-- Right align -->
-                <a href="#"
-                   class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
-                   id="logout" onclick="w3_close()">Logout</a>
+            <!-- Right align -->
+            <a href="#"
+               class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
+               id="logout" onclick="w3_close()">Logout</a>
+
+            {{#if isRole "admin"}}
                 <!-- Normal link -->
                 <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                   href="#">
-                    Je suis admin
+                   href="{{pathFor 'organisateur'}}">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    Gestion Organisateurs
                 </a>
             {{else}}
-                <!-- Right align -->
-                <a href="#"
-                   class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"
-                   id="logout" onclick="w3_close()">Logout</a>
-                <a href="#"
-                   class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-right w3-text-teal w3-hover-text-white">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    Profile
-                </a>
+                {{#if isRole "gest"}}
+                    <!-- Normal link -->
+                    <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                       href="{{pathFor 'chasse'}}">
+                        <i class="fa fa-map-signs" aria-hidden="true"></i>
+                        Gestion Chasses
+                    </a>
+                    <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                       href="{{pathFor 'equipe'}}">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        Gestion Équipes
+                    </a>
+                {{else}}
+                    <!-- Right align -->
+                    <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-right w3-text-teal w3-hover-text-white"
+                       href="{{pathFor 'profileEdit'}}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        Profile
+                    </a>
 
-                <!-- Normal link -->
-                <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                   href="{{pathFor 'map'}}">
-                    <i class="fa fa-map" aria-hidden="true"></i>
-                    Map
-                </a>
+                    <!-- Normal link -->
+                    <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                       href="{{pathFor 'map'}}">
+                        <i class="fa fa-map" aria-hidden="true"></i>
+                        Map
+                    </a>
+                {{/if}}
             {{/if}}
         {{else}}
             <a class="w3-bar-item w3-button w3-amber w3-border w3-border-amber w3-right w3-hover-white"

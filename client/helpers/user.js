@@ -1,10 +1,10 @@
 Template.headerNormal.helpers({
-    "isAdmin": function () {
-        return Meteor.user().profile.role == "admin";
-    },
+    "isRole": function (role) {
+        return Meteor.user().profile.role === role;
+    }
 });
 Template.headerSidebar.helpers({
-    "isAdmin": function () {
-        return Meteor.user().profile.role == "admin";
-    },
+    "isRole": function (role) {
+        return Meteor.user().profile.role === role;
+    }
 });
