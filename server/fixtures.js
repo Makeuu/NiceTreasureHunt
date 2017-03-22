@@ -3,6 +3,7 @@ Meteor.users.remove({});
 LocData.remove({});
 
 if (Meteor.users.find().count() === 0) {
+    console.log("Fixtures update !");
     Accounts.createUser({
         email: "root@root.fr",
         password: "root",
