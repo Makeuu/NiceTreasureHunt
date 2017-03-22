@@ -1,0 +1,43 @@
+<template name="headerSidebar">
+    <div class="w3-hide-medium w3-hide-large">
+        <nav class="w3-sidenav w3-collapse w3-white w3-card-2 w3-animate-left"
+             style="width:150px;" id="mySidenav">
+            <a href="javascript:void(0)" onclick="w3_close()"
+               class="w3-closenav w3-hide-large w3-hover-black">Close &times;</a>
+            {{#if currentUser}}
+                {{#if isAdmin}}
+                    <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                       href="#" onclick="w3_close()">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        Je suis admin
+                    </a>
+                {{else}}
+                    <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                       href="{{pathFor 'map'}}" onclick="w3_close()">
+                        <i class="fa fa-map" aria-hidden="true"></i>
+                        Map
+                    </a>
+                    <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                       href="#" onclick="w3_close()">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="w3-mobile w3-white w3-hover-amber w3-text-amber w3-hover-text-white"
+                       id="logout" onclick="w3_close()">
+                        <i class="fa fa-sign-out " aria-hidden="true"></i>
+                        Logout
+                    </a>
+                {{/if}}
+            {{else}}
+                <a class="w3-mobile w3-teal w3-border w3-border-teal w3-hover-white"
+                   href="{{pathFor 'login'}}" onclick="w3_close()">
+                    Login
+                </a>
+                <a class="w3-mobile w3-amber w3-border w3-border-amber w3-hover-white"
+                   href="{{pathFor 'signup'}}" onclick="w3_close()">
+                    Sign Up
+                </a>
+            {{/if}}
+        </nav>
+    </div>
+</template>
