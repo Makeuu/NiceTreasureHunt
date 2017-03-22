@@ -15,5 +15,11 @@ Accounts.onCreateUser(function (options, user) {
     return user;
 });
 
+Meteor.users.allow({
+    update: function () {
+        return true;
+    }
+});
+
 Meteor.startup(() => {
 });

@@ -11,17 +11,21 @@ Template.profileEdit.helpers({
 Template.profileEdit.events({
     'submit form': function (event) {
         event.preventDefault();
-        var email = event.target.email.value;
-        var username = event.target.username.value;
-        var color = event.target.color.value;
-        var password = event.target.password.value;
 
-        console.log(email, username, color, password);
-        /*Meteor.users.update(
-            {_id: Meteor.userId()},
-            {$set: {
-                "profile.name": "yogi"
-            }}
-        );*/
+        var email = [{address: event.target.email.value, verified: false}];
+
+        const profileProperties = {
+            emails: email,
+            username: event.target.username.value,
+            color: event.target.color.value,
+        };
+
+        Meteor.users.update({_id: Meteor.userId()}, {$set: profileProperties}, function (error) {
+            if (error) {
+                console.log(error.reason);
+            } else {
+                Router.go('profileEdit');
+            }
+        });
     }
 });
