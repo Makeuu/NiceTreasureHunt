@@ -5,8 +5,12 @@ Meteor.publish('loc', function () {
 Meteor.publish("userData", function () {
     if (this.userId) {
         return Meteor.users.find({_id: this.userId},
-            {fields: {'role': 1, 'color': 1}});
+            {fields: {'color': 1}});
     } else {
         this.ready();
     }
+});
+
+Meteor.publish("allUsers", function () {
+    return Meteor.users.find({}, {fields: {color: 0, password: 0}});
 });

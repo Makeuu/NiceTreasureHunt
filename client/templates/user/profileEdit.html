@@ -1,8 +1,8 @@
 <template name="profileEdit">
     <form class="w3-row-padding w3-small">
-        <div class="w3-col m4 w3-card-4">
+        <div class="w3-col s4 w3-card-2">
             <img src="http://icon-icons.com/icons2/217/PNG/512/user-blue_25325.png"
-                 class="" alt="img_utilisateur" style="width:206px"/>
+                 class="" alt="img_utilisateur" style="width:100%; max-width: 206px;"/>
         </div>
         <div class="w3-col m8 w3-col">
             <div class="w3-text-teal">
@@ -10,8 +10,8 @@
                 <input name="username" type="text" value="{{profileUser.username}}" placeholder="Nom d'utilisateur"
                        class="w3-input w3-border-bottom w3-border-teal"/>
                 <label class="">E-Mail</label>
-                <input name="email" type="text" value="{{profileUser.email}}" placeholder="Adresse mail"
-                       class="w3-input w3-border-bottom w3-border-teal"/>
+                <input name="email" type="email" value="{{profileUser.email}}" placeholder="Adresse mail"
+                       class="w3-input w3-border-bottom w3-border-teal" required/>
                 <label class="">Color</label>
                 <input name="color" type="text" value="{{profileUser.color}}" placeholder="Couleur"
                        class="w3-input w3-border-bottom w3-border-teal"/>
