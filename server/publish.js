@@ -11,6 +11,9 @@ Meteor.publish("userData", function () {
     }
 });
 
-Meteor.publish("allUsers", function () {
-    return Meteor.users.find({}, {fields: {color: 0, password: 0}});
+Meteor.publish("userList", function () {
+    return Meteor.users.find();
+});
+Meteor.publish("equipeList", function () {
+    return Equipe.find();
 });
