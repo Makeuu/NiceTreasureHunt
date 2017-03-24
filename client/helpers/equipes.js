@@ -11,7 +11,7 @@ Template.equipe.events({
         event.preventDefault();
         var nomEquipe = document.querySelector("#nomEquipe");
 
-        if (nomEquipe !== "") {
+        if (nomEquipe.value !== "") {
             Equipe.insert({
                 nom: nomEquipe.value,
                 team: []
