@@ -1,9 +1,9 @@
 <template name="equipe">
     <table class="w3-table w3-bordered w3-stripped w3-border w3-small w3-center">
         <tr class="w3-teal w3-text-white">
-            <th class="w3-third">Nom</th>
-            <th class="w3-third">#Dedans#</th>
-            <th class="w3-third">Action</th>
+            <th class="w3-quarter">Nom</th>
+            <th class="w3-half">Utilisateurs </th>
+            <th class="w3-quarter">Action</th>
         </tr>
 
         {{#each list}}
@@ -11,12 +11,12 @@
         {{/each}}
 
         <tr>
-            <td class="w3-third">
+            <td class="w3-quarter">
                 <input class="w3-input w3-border-teal" placeholder="Nom de l'équipe" id="nomEquipe"/>
             </td>
-            <td class="w3-third">
+            <td class="w3-half">
             </td>
-            <td class="w3-third">
+            <td class="w3-quarter">
                 <button class="w3-btn w3-text-teal w3-pale-green js-addEquipe"><i class="fa fa-plus"></i></button>
             </td>
         </tr>

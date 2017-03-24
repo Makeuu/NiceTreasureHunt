@@ -29,13 +29,20 @@ if (Meteor.users.find().count() === 0) {
             role: "user"
         }
     });
+    Accounts.createUser({
+        email: "user2@user.fr",
+        username: "user2",
+        password: "user2",
+        profile: {
+            role: "user"
+        }
+    });
     Equipe.insert({
         nom: "test du nom",
-        team: [{username: "toto"}, {username: "tata"}]
+        team: []
     });
     Equipe.insert({
         nom: "le second ",
-        team: [{username: "idromel"}]
+        team: []
     });
 }
-
