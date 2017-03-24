@@ -1,19 +1,30 @@
 Template.equipe.helpers({
-    "list": function () {
-        return Equipe.find().fetch();
+        "list": function () {
+            return Equipe.find().fetch();
+        }
     }
-});
+);
+
 Template.equipe.events({
     'click .js-addEquipe': function (event) {
         event.preventDefault();
-        const equipe = event.target.parentNode.parentNode.childNodes[1].childNodes[1].value;
+        var nomEquipe = document.querySelector("#nomEquipe");
 
-        console.log("add equipe", equipe);
+        if(nomEquipe!=="") {
+            Equipe.insert({
+                nom: nomEquipe.value,
+                team: []
+            });
+        }
+        nomEquipe.value = "";
     }
-}, {
+});
+
+
+Template.oneEquipe.events({
     'click .js-deleteEquipe': function (event) {
         event.preventDefault();
 
-        console.log("delete equipe");
+        Equipe.remove(this._id);
     }
 });

@@ -1,0 +1,15 @@
+<template name="oneEquipe">
+    <tr>
+        <td class="w3-third">{{nom}}</td>
+        <td class="w3-third">
+            {{#each team}}
+                {{username}},
+            {{/each}}
+        </td>
+        <td class="w3-third">
+            <button class="w3-btn w3-text-red w3-pale-red js-deleteEquipe" id="{{_id}}">
+                <i class="fa fa-minus"></i>
+            </button>
+        </td>
+    </tr>
+</template>
