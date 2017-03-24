@@ -2,6 +2,9 @@
 Meteor.users.remove({});
 LocData.remove({});
 Equipe.remove({});
+Chasse.remove({});
+Parcours.remove({});
+Etapes.remove({});
 
 if (Meteor.users.find().count() === 0) {
     console.log("Fixtures update !");
@@ -45,4 +48,22 @@ if (Meteor.users.find().count() === 0) {
         nom: "le second ",
         team: []
     });
+
+    const idP1 = Parcours.insert({
+        nom: "Parcours 1",
+        listEtapes: []
+    });
+    const idP2 = Parcours.insert({
+        nom: "Parcours 2",
+        listEtapes: []
+    });
+    Chasse.insert({
+        nom: "Chasse à Evry",
+        listParcours : [idP1, idP2]
+    });
+    Chasse.insert({
+        nom: "Chasse à Nice",
+        listParcours : []
+    });
+    console.log("Fixtures chargé !");
 }

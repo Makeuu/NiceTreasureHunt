@@ -1,0 +1,23 @@
+<template name="gestParcours">
+    <table class="w3-table w3-bordered w3-stripped w3-border w3-small w3-centered">
+        <tr class="w3-teal w3-text-white">
+            <th class="w3-third">Nom</th>
+            <th class="w3-rest">Action</th>
+        </tr>
+
+        {{#each listParcours}}
+            {{> parcours}}
+        {{/each}}
+
+        <tr>
+            <td class="w3-third">
+                <input class="w3-input w3-border-teal" placeholder="Nom du parcours" id="nomParcours"/>
+            </td>
+            <td class="w3-rest">
+                <button class="w3-btn w3-text-green w3-pale-green w3-hover-text-white w3-hover-green js-addParcours">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+</template>

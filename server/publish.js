@@ -17,3 +17,19 @@ Meteor.publish("userList", function () {
 Meteor.publish("equipeList", function () {
     return Equipe.find();
 });
+
+Meteor.publish("chasseList", function () {
+    return Chasse.find();
+});
+Meteor.publish("parcoursList", function (id) {
+    const listP = Chasse.find({_id: id}).fetch()[0];
+
+    if(listP !== undefined) {
+        return Parcours.find({_id: {$in: listP.listParcours}});
+    } else {
+        this.ready();
+    }
+});
+Meteor.publish("etapesList", function () {
+    return Etapes.find();
+});
