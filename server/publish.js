@@ -18,6 +18,19 @@ Meteor.publish("equipeList", function () {
     return Equipe.find();
 });
 
+Meteor.publish("chatRoomList", function () {
+  return ChatRoom.find();
+});
+Meteor.publish("chatRoomMessages", function (id) {
+  return Message.find({"equipeID": id}, {sort: {date: -1}, limit:10});
+});
+Meteor.publish("userMessages", function () {
+  var equipe = Equipe.findOne({team : this.userId});
+  if (!equipe) this.stop();
+
+  return Message.find({"equipeID": equipe._id}, {sort: {date: -1}, limit:10});
+});
+
 Meteor.publish("chasseList", function () {
     return Chasse.find();
 });

@@ -5,6 +5,8 @@ Equipe.remove({});
 Chasse.remove({});
 Parcours.remove({});
 Etapes.remove({});
+ChatRoom.remove({});
+Message.remove({});
 
 if (Meteor.users.find().count() === 0) {
     console.log("Fixtures update !");
@@ -24,7 +26,7 @@ if (Meteor.users.find().count() === 0) {
             role: "gest"
         }
     });
-    Accounts.createUser({
+    const user1 = Accounts.createUser({
         email: "user@user.fr",
         username: "user",
         password: "user",
@@ -32,7 +34,7 @@ if (Meteor.users.find().count() === 0) {
             role: "user"
         }
     });
-    Accounts.createUser({
+    const user2 = Accounts.createUser({
         email: "user2@user.fr",
         username: "user2",
         password: "user2",
@@ -40,11 +42,11 @@ if (Meteor.users.find().count() === 0) {
             role: "user"
         }
     });
-    Equipe.insert({
+    const eq1 = Equipe.insert({
         nom: "test du nom",
-        team: []
+        team: [user1, user2]
     });
-    Equipe.insert({
+    const eq2 = Equipe.insert({
         nom: "le second ",
         team: []
     });
@@ -65,5 +67,33 @@ if (Meteor.users.find().count() === 0) {
         nom: "Chasse à Nice",
         listParcours : []
     });
+    
+    
+    Message.insert({
+      "equipeID" : eq1,
+      "date": new Date(),
+      "from": "Organisateur",
+      "msg" : "First Message to test",
+      "type": 0
+    });
+    
+    var msgID = Message.insert({
+      "equipeID" : eq1,
+      "date": new Date(),
+      "from": "Organisateur",
+      "msg" : "Second Message to test",
+      "type": 0
+    });
+    
+    ChatRoom.insert({
+      "_id" : eq1,
+      "last": {
+        "date": new Date(),
+        "uRead": false,
+        "aRead": true,
+        "msgID": msgID
+      }
+    });
+    
     console.log("Fixtures chargé !");
 }

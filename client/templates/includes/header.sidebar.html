@@ -11,6 +11,11 @@
                         <i class="fa fa-cog" aria-hidden="true"></i>
                         Gestion Organisateurs
                     </a>
+                    <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                       href="{{pathFor 'adminMessage'}}" onclick="w3_close()">
+                        <i class="fa fa-comments" aria-hidden="true"></i>
+                        Chat Room
+                    </a>
                 {{else}}
                     {{#if isRole "gest"}}
                         <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
@@ -23,12 +28,22 @@
                             <i class="fa fa-cog" aria-hidden="true"></i>
                             Gestion Équipes
                         </a>
+                        <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                           href="{{pathFor 'adminMessage'}}" onclick="w3_close()">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            Chat Room
+                        </a>
                     {{else}}
                         <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
                            href="{{pathFor 'map'}}" onclick="w3_close()">
                             <i class="fa fa-map" aria-hidden="true"></i>
                             Map
                         </a>
+                        <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                         href="{{pathFor 'userMessage'}}">
+                          <i class="fa fa-comments" aria-hidden="true"></i>
+                          Need Help
+                      </a>
                     {{/if}}
                     <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
                        href="{{pathFor 'profileEdit'}}" onclick="w3_close()">

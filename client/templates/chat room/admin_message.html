@@ -1,0 +1,51 @@
+<template name="adminMessage">
+  <div class="w3-row">
+    <div class="w3-half">
+      <ul class="w3-ul w3-card-2">
+        {{#each list}}
+          {{> AMEquipe }}
+        {{/each}}
+        
+      </ul>
+    </div>
+    <div class="w3-half">
+      <div class="w3-card" style="min-height: 500px">
+        {{#each messages }}
+          {{> messagePanel }}
+        {{/each}}
+      </div>
+      <div class="w3-row">
+        <input id="ACR_Input" class="w3-col m10 l8" type="text" />
+        <span id="ACR_Submit" class="w3-button w3-white w3-right w3-hover-blue w3-col m2 l4">></span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="AMEquipe">
+<li class="w3-padding-16 w3-hover-light-grey">
+  <a href="{{ pathFor 'adminMessage' }}/{{ _id }}" class="w3-button w3-white w3-xlarge w3-right w3-hover-red">></a>
+  <span class="w3-large">{{ nom }}</span><br>
+  <span>{{lastMessage}}</span>
+</li>
+</template>
+
+<template name="messagePanel">
+  <div class="w3-panel w3-green w3-round-xlarge">
+    <p>{{ msg }}</p>
+  </div>
+</template>
+
+<template name="userMessage">
+  <div class="w3-row">
+    <div class="w3-card" style="min-height: 500px">
+      {{#each messages }}
+        {{> messagePanel }}
+      {{/each}}
+    </div>
+    <div class="w3-row">
+      <input id="UCR_Input" class="w3-col m10 l8" type="text" />
+      <span id="UCR_Submit" class="w3-button w3-white w3-right w3-hover-blue w3-col m2 l4">></span>
+    </div>
+  </div>
+</template>
