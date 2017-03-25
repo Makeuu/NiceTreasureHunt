@@ -26,12 +26,13 @@
 <li class="w3-padding-16 w3-hover-light-grey">
   <a href="{{ pathFor 'adminMessage' }}/{{ _id }}" class="w3-button w3-white w3-xlarge w3-right w3-hover-red">></a>
   <span class="w3-large">{{ nom }}</span><br>
+  {{#if new }}<span class="w3-badge w3-red w3-left">!</span> {{/if}}
   <span>{{lastMessage}}</span>
 </li>
 </template>
 
 <template name="messagePanel">
-  <div class="w3-panel w3-green w3-round-xlarge">
+  <div class="w3-panel {{#if typeMessage }}w3-orange{{else}}w3-green{{/if}} w3-round-xlarge">
     <p>{{ msg }}</p>
   </div>
 </template>
