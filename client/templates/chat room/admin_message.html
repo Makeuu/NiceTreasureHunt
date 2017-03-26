@@ -1,52 +1,80 @@
 <template name="adminMessage">
-  <div class="w3-row">
-    <div class="w3-half">
-      <ul class="w3-ul w3-card-2">
-        {{#each list}}
-          {{> AMEquipe }}
-        {{/each}}
-        
-      </ul>
+    <div class="w3-row">
+        <div class="w3-half">
+            <ul class="w3-ul w3-card-2">
+                {{#each list}}
+                    {{> AMEquipe }}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="w3-half">
+            <div class="w3-card w3-border-teal" id="panelMessage"
+                 style="min-height: 500px; max-height: 500px; overflow-y: auto;">
+                {{#each messages }}
+                    {{> messagePanel }}
+                {{/each}}
+            </div>
+            <div class="w3-row">
+                <input id="ACR_Input" type="text"
+                       class="w3-col m11 l9 w3-input w3-border-bottom w3-border-left w3-border-right w3-border-teal"/>
+                <span id="ACR_Submit"
+                      class="w3-button w3-teal w3-right w3-hover-text-teal w3-hover-white w3-col m1 l3">
+                    <i class="fa fa-chevron-circle-right fa-lg" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
     </div>
-    <div class="w3-half">
-      <div class="w3-card" style="min-height: 500px">
-        {{#each messages }}
-          {{> messagePanel }}
-        {{/each}}
-      </div>
-      <div class="w3-row">
-        <input id="ACR_Input" class="w3-col m10 l8" type="text" />
-        <span id="ACR_Submit" class="w3-button w3-white w3-right w3-hover-blue w3-col m2 l4">></span>
-      </div>
-    </div>
-  </div>
+
+    <script>
+        element = document.querySelector("#panelMessage");
+        element.scrollTop = element.scrollHeight;
+    </script>
 </template>
 
 <template name="AMEquipe">
-<li class="w3-padding-16 w3-hover-light-grey">
-  <a href="{{ pathFor 'adminMessage' }}/{{ _id }}" class="w3-button w3-white w3-xlarge w3-right w3-hover-red">></a>
-  <span class="w3-large">{{ nom }}</span><br>
-  {{#if new }}<span class="w3-badge w3-red w3-left">!</span> {{/if}}
-  <span>{{lastMessage}}</span>
-</li>
+    <a href="{{ pathFor 'adminMessage' }}/{{ _id }}"
+       style="text-decoration: none">
+    <li class="w3-padding-16 w3-white w3-hover-red">
+        <button class="w3-button w3-xlarge w3-right w3-text-black w3-hover-red"
+                style="background-color: rgba(0, 0, 0, 0)">></button>
+        <span class="w3-large">{{ nom }}</span><br>
+        {{#if new }}<span class="w3-badge w3-red w3-left">!</span> {{/if}}
+        <span>{{lastMessage}}</span>
+    </li>
+    </a>
 </template>
 
 <template name="messagePanel">
-  <div class="w3-panel {{#if typeMessage }}w3-orange{{else}}w3-green{{/if}} w3-round-xlarge">
-    <p>{{ msg }}</p>
-  </div>
+    <div class="w3-panel w3-round-large w3-card-2
+        {{#if typeMessage }}
+            w3-orange w3-left-align w3-margin-right
+        {{else}}
+            w3-green w3-right-align w3-margin-left
+        {{/if}}">
+        <p>{{ msg }}</p>
+    </div>
 </template>
 
 <template name="userMessage">
-  <div class="w3-row">
-    <div class="w3-card" style="min-height: 500px">
-      {{#each messages }}
-        {{> messagePanel }}
-      {{/each}}
-    </div>
     <div class="w3-row">
-      <input id="UCR_Input" class="w3-col m10 l8" type="text" />
-      <span id="UCR_Submit" class="w3-button w3-white w3-right w3-hover-blue w3-col m2 l4">></span>
+        <div class="w3-card w3-border-teal" id="panelMessage"
+             style="min-height: 500px; max-height: 500px; overflow-y: auto;">
+            {{#each messages }}
+                {{> messagePanel }}
+            {{/each}}
+        </div>
+        <div class="w3-row">
+            <input id="UCR_Input" type="text"
+                   class="w3-col m11 l10 w3-input  w3-border-bottom w3-border-left w3-border-teal w3-border-right"/>
+            <span id="UCR_Submit"
+                  class="w3-button w3-teal w3-right w3-hover-text-teal w3-hover-white w3-col m1 l2">
+                <i class="fa fa-chevron-circle-right fa-lg" aria-hidden="true"></i>
+            </span>
+        </div>
     </div>
-  </div>
+
+    <script>
+        element = document.querySelector("#panelMessage");
+        element.scrollTop = element.scrollHeight;
+    </script>
 </template>

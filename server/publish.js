@@ -65,10 +65,10 @@ Meteor.publish("chasseList", function () {
     return Chasse.find();
 });
 Meteor.publish("parcoursList", function (id) {
-    const listP = Chasse.find({_id: id}).fetch()[0];
-
-    if(listP !== undefined) {
-        return Parcours.find({_id: {$in: listP.listParcours}});
+    if (this.userId) {
+        var list = Chasse.findOne({_id: id});
+        if (!list) this.stop();
+        return Parcours.find({_id: {$in: list.listParcours}});
     } else {
         this.ready();
     }
