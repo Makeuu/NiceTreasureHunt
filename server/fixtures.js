@@ -89,7 +89,7 @@ if (Meteor.users.find().count() === 0) {
       "_id" : eq1,
       "last": {
         "date": new Date(),
-        "uRead": false,
+        "uRead": [],
         "aRead": true,
         "msgID": msgID
       }

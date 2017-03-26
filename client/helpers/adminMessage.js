@@ -46,7 +46,10 @@ function IveReadIt (who){
     if (chat  && !chat.last.aRead)
       Meteor.call("AdminReadIt", {"equipe": Router.current().params.id}); 
     break;
-    case "user" : Meteor.call("UserReadIt"); break;
+    case "user" : var chat = ChatRoom.findOne();
+    if (chat && chat.last.uRead.indexOf(Meteor.userId()) == -1)
+      Meteor.call("UserReadIt"); 
+    break;
   }
 }
 
@@ -79,6 +82,9 @@ Template.userMessage.events({
          SendUserMessage();
       }
     },
+    'mousemove': function (event) {
+      IveReadIt("user");
+    }
 });
 
 function SendUserMessage () {
