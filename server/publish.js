@@ -1,78 +1,101 @@
 Meteor.publish('loc', function () {
-  if (this.userId) { 
-    var equipe = Equipe.findOne({team : this.userId});
-    if (!equipe) this.stop();
-    return LocData.find({"_id" : {$in : equipe.team}}, {fields: {last: 1, userID: 1}});
-  } else {
-      this.ready();
-  }
+    if (this.userId) {
+        const equipe = Equipe.findOne({team: this.userId});
+        if (equipe)
+            return LocData.find({"_id": {$in: equipe.team}}, {fields: {last: 1, userID: 1}});
+    }
+
+    this.ready();
 });
 
 Meteor.publish("userData", function () {
     if (this.userId) {
         return Meteor.users.find({_id: this.userId},
             {fields: {'color': 1}});
-    } else {
-        this.ready();
     }
+
+    this.ready();
 });
 
 Meteor.publish("userEquipe", function () {
-  if (this.userId) {
-    return Equipe.find({team : this.userId});
-  } else {
+    if (this.userId) {
+        return Equipe.find({team: this.userId});
+    }
+
     this.ready();
-  }
 });
 
 Meteor.publish("userList", function () {
-    return Meteor.users.find();
+    if (this.userId) {
+        return Meteor.users.find();
+    }
+
+    this.ready();
 });
 
 Meteor.publish("equipeList", function () {
-    return Equipe.find();
+    if (this.userId) {
+        return Equipe.find();
+    }
+
+    this.ready();
 });
 
 Meteor.publish("chatRoomList", function () {
-  return ChatRoom.find();
+    if (this.userId) {
+        return ChatRoom.find();
+    }
+
+    this.ready();
 });
 
 Meteor.publish("userChatRoom", function () {
-  if (this.userId) { 
-    var equipe = Equipe.findOne({team : this.userId});
-    if (!equipe) this.stop();
-    return ChatRoom.find({"_id" : equipe._id});
-  } else {
-      this.ready();
-  }
+    if (this.userId) {
+        const equipe = Equipe.findOne({team: this.userId});
+        if (equipe)
+            return ChatRoom.find({"_id": equipe._id});
+    }
+
+    this.ready();
 });
 
 Meteor.publish("chatRoomMessages", function (id) {
-  return Message.find({"equipeID": id}, {sort: {date: -1}, limit:10});
+    if (this.userId)
+        return Message.find({"equipeID": id}, {sort: {date: -1}, limit: 10});
+
+    return this.ready();
 });
 
 Meteor.publish("userMessages", function () {
-  if (this.userId) { 
-    var equipe = Equipe.findOne({team : this.userId});
-    if (!equipe) this.stop();
-    return Message.find({"equipeID": equipe._id}, {sort: {date: -1}, limit:10});
-  } else {
-      this.ready();
-  }
+    if (this.userId) {
+        const equipe = Equipe.findOne({team: this.userId});
+        if (equipe)
+            return Message.find({"equipeID": equipe._id}, {sort: {date: -1}, limit: 10});
+    }
+
+    this.ready();
 });
 
 Meteor.publish("chasseList", function () {
-    return Chasse.find();
+    if (this.userID)
+        return Chasse.find();
+
+    return this.ready();
 });
+
 Meteor.publish("parcoursList", function (id) {
     if (this.userId) {
-        var list = Chasse.findOne({_id: id});
-        if (!list) this.stop();
-        return Parcours.find({_id: {$in: list.listParcours}});
-    } else {
-        this.ready();
+        const list = Chasse.findOne({_id: id});
+        if (list)
+            return Parcours.find({_id: {$in: list.listParcours}});
     }
+
+    this.ready();
 });
+
 Meteor.publish("etapesList", function () {
-    return Etapes.find();
+    if (this.userID)
+        return Etapes.find();
+
+    return this.ready();
 });
