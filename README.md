@@ -25,5 +25,6 @@ Une fois le projet sur votre machine, exécutez le à l'aide de la commande `met
 ## Links
 
 Pour de plus amples informations sur la réalisation et l'utilisateur de l'application, rendez-vous sur le Wiki du projet : https://github.com/Makeuu/NiceTreasureHunt/wiki
+L'application est déployé automatiquement sur un serveur de test hébergé sur Heroku. À chaque push sur le projet l'application est re-deployé et disponible à cette adresse : https://nicetreasure.herokuapp.com/
 
 ### ENJOY !
