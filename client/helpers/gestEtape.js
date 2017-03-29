@@ -3,6 +3,11 @@ Template.gestEtape.helpers({
         return Etapes.find().fetch();
     }
 });
+Template.modifEtape.helpers({
+    "etape": function () {
+        return Etapes.findOne();
+    }
+});
 
 Template.gestEtape.events({
     "click .js-addParcours": function (event) {
@@ -27,6 +32,28 @@ Template.etapes.events({
 
             Etapes.update({_id: event.target.id}, {
                 $pull: {parcoursId: Router.current().params['id']}
+            });
+        }
+    }
+);
+
+Template.modifEtape.events({
+        'click .js-saveEtape': function (event) {
+            event.preventDefault();
+
+            const nom = document.querySelector("[name='nom']").value;
+            const ques = document.querySelector("[name='question']").value;
+            const pos = document.querySelector("[name='position']").value;
+            const lat = document.querySelector("[name='lat']").value;
+            const lng = document.querySelector("[name='lng']").value;
+
+            Etapes.update({_id: event.target.id}, {
+                $set: {
+                    nom: nom,
+                    /*question: ,
+                    reponse: ,
+                    position:*/
+                }
             });
         }
     }

@@ -7,7 +7,8 @@
             {{type}}
         </td>
         <td class="w3-third">
-            <a href="{{pathFor 'modifEtape' id=_id}}" class="w3-btn w3-text-yellow w3-pale-yellow w3-hover-text-white w3-hover-yellow js-seeEtapes">
+            <a href="{{pathFor 'modifEtape' id=_id}}"
+               class="w3-btn w3-text-yellow w3-pale-yellow w3-hover-text-white w3-hover-yellow js-seeEtapes">
                 <i class="fa fa-pencil"></i>
             </a>
             <button class="w3-btn w3-text-red w3-pale-red w3-hover-text-white w3-hover-red js-deleteEtape" id="{{_id}}">
@@ -15,4 +16,34 @@
             </button>
         </td>
     </tr>
+</template>
+
+<template name="modifEtape">
+    <div class="w3-card-4">
+        <header class="w3-container w3-teal w3-padding-8">
+            <input class="w3-input w3-half w3-teal w3-hover-white w3-border-0" name="nom" value="{{etape.nom}}">
+        </header>
+
+        <div class="w3-container">
+            <label class="w3-text-teal">Type :</label>
+            <input class="w3-input w3-disabled" value="{{etape.type}}">
+
+            {{#if etape.question}}
+                <label class="w3-text-teal">Question</label>
+                <input class="w3-input" name="question" value="{{etape.question}}">
+            {{/if}}
+
+            <label class="w3-text-teal">Position dans le parcours</label>
+            <input class="w3-input" type="number" name="position" value="{{etape.position}}">
+            <label class="w3-text-teal">Latitude</label>
+            <input class="w3-input" name="lat" value="{{etape.lat}}">
+            <label class="w3-text-teal">Longitude</label>
+            <input class="w3-input" name="lng" value="{{etape.lng}}">
+
+            <div class="w3-padding w3-right">
+                <a href="#" class="w3-btn w3-gray" onclick="history.go(-1)">Annuler</a>
+                <button class="w3-btn w3-teal js-saveEtape">Sauvegarder</button>
+            </div>
+        </div>
+    </div>
 </template>

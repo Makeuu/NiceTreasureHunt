@@ -17,11 +17,7 @@
             <td class="w3-third">
                 Rajouter une étape :
             </td>
-            <td class="w3-third">
-                <select>
-                    <option>. . .</option>
-                    <option value="localise">Point de localisation</option>
-                </select>
+            <td class="w3-third">{{>selectType}}
             </td>
             <td class="w3-third">
                 <button class="w3-btn w3-text-green w3-pale-green w3-hover-text-white w3-hover-green js-addParcours">
@@ -30,4 +26,11 @@
             </td>
         </tr>
     </table>
+</template>
+
+<template name="selectType">
+    <select>
+        <option>. . .</option>
+        <option value="Question">Poser une question</option>
+    </select>
 </template>

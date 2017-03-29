@@ -66,9 +66,12 @@ if (Meteor.users.find().count() === 0) {
         nom: "Parcours 2",
         chasseId: [idC1]
     });
-
     Etapes.insert({
-        nom: "Etape test",
+        nom: "Pigeon",
+        type: "Question",
+        question: "Quel est la différence entre un pigeon ?",
+        reponse: "Il a les deux pattes identiques, surtout la gauche.",
+        position: 1,
         parcoursId: [idP1]
     });
 
@@ -79,7 +82,6 @@ if (Meteor.users.find().count() === 0) {
       "msg" : "First Message to test",
       "type": 0
     });
-    
     var msgID = Message.insert({
       "equipeID" : eq1,
       "date": new Date(),
@@ -87,7 +89,6 @@ if (Meteor.users.find().count() === 0) {
       "msg" : "Second Message to test",
       "type": 0
     });
-    
     ChatRoom.insert({
       "_id" : eq1,
       "last": {

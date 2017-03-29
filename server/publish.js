@@ -93,3 +93,8 @@ Meteor.publish("etapesList", function (id) {
     else
         return this.ready();
 });
+
+Meteor.publish("etapeData", function (id) {
+    if (this.userId)
+        return Etapes.find({_id: id});
+});
