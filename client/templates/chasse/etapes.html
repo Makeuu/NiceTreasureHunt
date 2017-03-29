@@ -1,3 +1,18 @@
 <template name="etapes">
-etapes
+    <tr>
+        <td class="w3-third">
+            {{nom}}
+        </td>
+        <td class="w3-third">
+            {{type}}
+        </td>
+        <td class="w3-third">
+            <a href="{{pathFor 'modifEtape' id=_id}}" class="w3-btn w3-text-yellow w3-pale-yellow w3-hover-text-white w3-hover-yellow js-seeEtapes">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <button class="w3-btn w3-text-red w3-pale-red w3-hover-text-white w3-hover-red js-deleteEtape" id="{{_id}}">
+                <i class="fa fa-trash"></i>
+            </button>
+        </td>
+    </tr>
 </template>

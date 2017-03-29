@@ -12,8 +12,7 @@ Template.gestChasse.events({
 
         if (nomChasse.value !== "") {
             Chasse.insert({
-                nom: nomChasse.value,
-                listParcours: []
+                nom: nomChasse.value
             });
         }
         nomChasse.value = "";

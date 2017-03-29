@@ -51,24 +51,27 @@ if (Meteor.users.find().count() === 0) {
         team: []
     });
 
+    const idC1 = Chasse.insert({
+        nom: "Chasse à Evry"
+    });
+    Chasse.insert({
+        nom: "Chasse à Nice"
+    });
+
     const idP1 = Parcours.insert({
         nom: "Parcours 1",
-        listEtapes: []
+        chasseId: [idC1]
     });
-    const idP2 = Parcours.insert({
+    Parcours.insert({
         nom: "Parcours 2",
-        listEtapes: []
+        chasseId: [idC1]
     });
-    Chasse.insert({
-        nom: "Chasse à Evry",
-        listParcours : [idP1, idP2]
+
+    Etapes.insert({
+        nom: "Etape test",
+        parcoursId: [idP1]
     });
-    Chasse.insert({
-        nom: "Chasse à Nice",
-        listParcours : []
-    });
-    
-    
+
     Message.insert({
       "equipeID" : eq1,
       "date": new Date(),

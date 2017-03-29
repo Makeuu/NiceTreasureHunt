@@ -1,22 +1,29 @@
-<template name="gestParcours">
+<template name="gestEtape">
     <table class="w3-table w3-bordered w3-stripped w3-border w3-small w3-centered">
         <tr class="w3-teal w3-text-white">
             <th class="w3-third">
                 <a href="#" class="w3-left" onclick="history.go(-1)"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                 Nom
             </th>
-            <th class="w3-rest">Action</th>
+            <th class="w3-third">Type</th>
+            <th class="w3-third">Action</th>
         </tr>
 
-        {{#each listParcours}}
-            {{> parcours}}
+        {{#each listEtape}}
+            {{> etapes}}
         {{/each}}
 
-        <tr>
+        <tr class="w3-pale-green">
             <td class="w3-third">
-                <input class="w3-input w3-border-teal" placeholder="Nom du parcours" id="nomParcours"/>
+                Rajouter une étape :
             </td>
-            <td class="w3-rest">
+            <td class="w3-third">
+                <select>
+                    <option>. . .</option>
+                    <option value="localise">Point de localisation</option>
+                </select>
+            </td>
+            <td class="w3-third">
                 <button class="w3-btn w3-text-green w3-pale-green w3-hover-text-white w3-hover-green js-addParcours">
                     <i class="fa fa-plus"></i>
                 </button>

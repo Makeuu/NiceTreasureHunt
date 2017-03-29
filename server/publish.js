@@ -77,25 +77,19 @@ Meteor.publish("userMessages", function () {
 });
 
 Meteor.publish("chasseList", function () {
-    if (this.userID)
+    if (this.userId)
         return Chasse.find();
-
-    return this.ready();
+    else
+        return this.ready();
 });
 
 Meteor.publish("parcoursList", function (id) {
-    if (this.userId) {
-        const list = Chasse.findOne({_id: id});
-        if (list)
-            return Parcours.find({_id: {$in: list.listParcours}});
-    }
-
-    this.ready();
+    return Parcours.find({chasseId: id});
 });
 
-Meteor.publish("etapesList", function () {
-    if (this.userID)
-        return Etapes.find();
-
-    return this.ready();
+Meteor.publish("etapesList", function (id) {
+    if (this.userId)
+        return Etapes.find({parcoursId: id});
+    else
+        return this.ready();
 });

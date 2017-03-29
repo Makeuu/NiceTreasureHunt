@@ -1,10 +1,10 @@
-Template.gestParcours.helpers({
-    "listParcours": function () {
-        return Parcours.find().fetch();
+Template.gestEtape.helpers({
+    "listEtape": function () {
+        return Etapes.find().fetch();
     }
 });
 
-Template.gestParcours.events({
+Template.gestEtape.events({
     "click .js-addParcours": function (event) {
         event.preventDefault();
 
@@ -21,14 +21,13 @@ Template.gestParcours.events({
     }
 });
 
-Template.parcours.events({
-        'click .js-deleteParcours': function (event) {
+Template.etapes.events({
+        'click .js-deleteEtape': function (event) {
             event.preventDefault();
 
-            Parcours.update({_id: event.target.id}, {
-                $pull: {chasseId: Router.current().params['id']}
+            Etapes.update({_id: event.target.id}, {
+                $pull: {parcoursId: Router.current().params['id']}
             });
         }
     }
 );
-
