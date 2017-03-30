@@ -34,19 +34,26 @@
                             Chat Room
                         </a>
                     {{else}}
-                      {{#if isInEquipe}}
-                        <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                           href="{{pathFor 'map'}}" onclick="w3_close()">
-                            <i class="fa fa-map" aria-hidden="true"></i>
-                            Map
-                        </a>
-                        <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                           href="{{pathFor 'userMessage'}}">
-                            <i class="fa fa-comments" aria-hidden="true"></i>
-                            Need Help
-                            {{#if newMessage }}<span class="w3-badge w3-red w3-right">!</span> {{/if}}
-                        </a>
-                      {{/if}}
+                        {{#if isInEquipe}}
+                            <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                               href="{{pathFor 'map'}}" onclick="w3_close()">
+                                <i class="fa fa-map" aria-hidden="true"></i>
+                                Map
+                            </a>
+                            <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                               href="{{pathFor 'seeEtapes'}}" onclick="w3_close()">
+                                <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+                                Voir étapes
+                            </a>
+                            <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                               href="{{pathFor 'userMessage'}}" onclick="w3_close()">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                Need Help
+                                {{#if newMessage }}
+                                    <span class="w3-badge w3-red w3-right">!</span>
+                                {{/if}}
+                            </a>
+                        {{/if}}
                     {{/if}}
                     <a class="w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
                        href="{{pathFor 'profileEdit'}}" onclick="w3_close()">

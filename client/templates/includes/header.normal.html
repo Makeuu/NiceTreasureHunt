@@ -43,21 +43,28 @@
                         Chat Room
                     </a>
                 {{else}}
-                  {{#if isInEquipe}}
-                    <!-- Normal link -->
-                    <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                       href="{{pathFor 'map'}}">
-                        <i class="fa fa-map" aria-hidden="true"></i>
-                        Map
-                    </a>
-                    <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
-                       href="{{pathFor 'userMessage'}}">
-                        {{#if newMessage }} <span class="w3-badge w3-red w3-left">!</span> 
-                        {{else}} <i class="fa fa-comments" aria-hidden="true"></i>
-                        {{/if}}
-                        Need Help
-                    </a>
-                  {{/if}}
+                    {{#if isInEquipe}}
+                        <!-- Normal link -->
+                        <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                           href="{{pathFor 'map'}}">
+                            <i class="fa fa-map" aria-hidden="true"></i>
+                            Map
+                        </a>
+                        <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                           href="{{pathFor 'seeEtapes'}}">
+                            <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+                            Voir étapes
+                        </a>
+                        <a class="w3-bar-item w3-button w3-mobile w3-hover-teal w3-text-teal w3-hover-text-white"
+                           href="{{pathFor 'userMessage'}}">
+                            {{#if newMessage }}
+                                <span class="w3-badge w3-red w3-left">!</span>
+                            {{else}}
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                            {{/if}}
+                            Need Help
+                        </a>
+                    {{/if}}
                 {{/if}}
             {{/if}}
         {{else}}

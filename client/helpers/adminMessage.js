@@ -1,9 +1,8 @@
 Template.adminMessage.helpers({
-        "list": function () {
-            return Equipe.find().fetch();
-        }
+    "list": function () {
+        return Equipe.find().fetch();
     }
-);
+});
 
 Template.adminMessage.events({
     'click #ACR_Submit': function (event) {
@@ -57,23 +56,21 @@ function IveReadIt(who) {
 }
 
 Template.AMEquipe.helpers({
-        "lastMessage": function () {
-            const infoChat = ChatRoom.findOne(this._id);
-            if (infoChat) {
-                return infoChat.last.date.toLocaleString();
-            }
-            return "Aucun message";
-        },
-        "new": function () {
-            const infoChat = ChatRoom.findOne(this._id);
-            if (infoChat) {
-                return !infoChat.last.aRead;
-            }
-            return false;
+    "lastMessage": function () {
+        const infoChat = ChatRoom.findOne(this._id);
+        if (infoChat) {
+            return infoChat.last.date.toLocaleString();
         }
+        return "Aucun message";
+    },
+    "new": function () {
+        const infoChat = ChatRoom.findOne(this._id);
+        if (infoChat) {
+            return !infoChat.last.aRead;
+        }
+        return false;
     }
-);
-
+});
 
 Template.userMessage.events({
     'click #UCR_Submit': function (event) {
@@ -88,6 +85,12 @@ Template.userMessage.events({
     'mousemove': function (event) {
         IveReadIt("user");
     }
+});
+
+Template.userMessage.onRendered(function () {
+    resizePanel();
+    element = document.querySelector("#panelMessage");
+    element.scrollTop = element.scrollHeight;
 });
 
 function SendUserMessage() {
@@ -106,6 +109,26 @@ function SendUserMessage() {
             $("#UCR_Input")[0].value = "";
         }
     });
+}
+
+function resizePanel() {
+    const w = window.innerWidth;
+    const h = window.innerHeight-40;
+    var newDimW = 0;
+    var newDimH = 0;
+    console.log("panel 1 ", w,h,newDimW, newDimH);
+    if(w <= 600) {
+        newDimW = w;
+        newDimH = h;
+    } else {
+        newDimW = w/3 -10;
+        newDimH = h-65.733;
+    }
+    console.log("panel 2", w,h,newDimW, newDimH);
+
+    document.querySelector(".js-userPanel").style.width = newDimW + "px";
+    document.querySelector(".js-userPanel").style.height = newDimH + "px";
+    console.log("panel Rezised");
 }
 
 Template.messagePanel.helpers({
