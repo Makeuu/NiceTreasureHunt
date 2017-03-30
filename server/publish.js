@@ -89,7 +89,7 @@ Meteor.publish("parcoursList", function (id) {
 
 Meteor.publish("etapesList", function (id) {
     if (this.userId)
-        return Etapes.find({parcoursId: id});
+        return Etapes.find({parcoursId: id},{sort: {position: 1}});
     else
         return this.ready();
 });

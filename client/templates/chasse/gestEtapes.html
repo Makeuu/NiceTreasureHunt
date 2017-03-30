@@ -1,12 +1,13 @@
 <template name="gestEtape">
     <table class="w3-table w3-bordered w3-stripped w3-border w3-small w3-centered">
         <tr class="w3-teal w3-text-white">
-            <th class="w3-third">
+            <th class="w3-quarter">
                 <a href="#" class="w3-left" onclick="history.go(-1)"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                 Nom
             </th>
-            <th class="w3-third">Type</th>
-            <th class="w3-third">Action</th>
+            <th class="w3-quarter">Type</th>
+            <th class="w3-quarter">Position</th>
+            <th class="w3-quarter">Action</th>
         </tr>
 
         {{#each listEtape}}
@@ -14,13 +15,15 @@
         {{/each}}
 
         <tr class="w3-pale-green">
-            <td class="w3-third">
+            <td class="w3-quarter">
                 Rajouter une étape :
             </td>
-            <td class="w3-third">{{>selectType}}
+            <td class="w3-quarter">
+                {{>selectType}}
             </td>
-            <td class="w3-third">
-                <button class="w3-btn w3-text-green w3-pale-green w3-hover-text-white w3-hover-green js-addParcours">
+            <td class="w3-quarter"></td>
+            <td class="w3-quarter">
+                <button class="w3-btn w3-text-green w3-pale-green w3-hover-text-white w3-hover-green js-addEtape">
                     <i class="fa fa-plus"></i>
                 </button>
             </td>
@@ -29,8 +32,7 @@
 </template>
 
 <template name="selectType">
-    <select>
-        <option>. . .</option>
+    <select class="js-select">
         <option value="Question">Poser une question</option>
     </select>
 </template>
