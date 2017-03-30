@@ -1,5 +1,6 @@
 var map;
 var tracks = [];
+var backgroundGeolocation;
 
 var style_mapicon = L.AwesomeMarkers.icon({
   prefix:'fa',
@@ -105,13 +106,13 @@ Template.map.onRendered(function (){
       map.on('movestart', function(e){locView = false});
       map.on('zoomstart', function(e){locView = false});
 
-      console.log("Start Locate");
+      //console.log("Start Locate");
       map.locate({watch : true});
       /*---------CORDOVA*/
       if(Meteor.isCordova){
         backgroundGeolocation.getLocations(
           function (locations) {
-            console.log(locations);
+            //console.log(locations);
 
             // Meteor.call('LocUpdate', e.latlng, function(error, result) {
             //   if (!result){
@@ -131,7 +132,7 @@ Template.map.onRendered(function (){
   function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
-    console.log("Founded at :" + e.latlng);
+    //console.log("Founded at :" + e.latlng);
 
     Meteor.call('LocUpdate', e.latlng, function(error, result) {
       // affiche l'erreur à l'utilisateur et s'interrompt
@@ -187,5 +188,5 @@ Template.map.onRendered(function (){
 
     document.querySelector("#map").style.width = newDimW + "px";
     document.querySelector("#map").style.height = newDimH + "px";
-    console.log("Map Rezised");
+    //console.log("Map Rezised");
   }

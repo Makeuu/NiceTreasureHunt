@@ -8,7 +8,9 @@ Template.oneEquipe.helpers({
         return Meteor.users.find({'profile.role': {$in: ["user", "gest"]}}).fetch();
     },
     "getUsername": function () {
-        return Meteor.users.find({_id: this.valueOf()}).fetch()[0].username;
+        try {
+            return Meteor.users.findOne({_id: this.valueOf()}).username;
+        } catch(e) {}
     },
     "listChasse": function () {
         return Chasse.find().fetch();
@@ -17,10 +19,12 @@ Template.oneEquipe.helpers({
         return Parcours.find({chasseId: id.hash.id}).fetch();
     },
     "isParcoursSelect": function (idEquipe, idParcours) {
-        const parcSelect = Equipe.findOne({_id: idEquipe}).parcours;
+        try {
+            const parcSelect = Equipe.findOne({_id: idEquipe}).parcours;
 
-        if (parcSelect === idParcours)
-            return {selected: true}
+            if (parcSelect === idParcours)
+                return {selected: true}
+        } catch (e) {}
     }
 });
 
@@ -48,14 +52,16 @@ Template.oneEquipe.events({
         'change .js-selectUser': function (event) {
             event.preventDefault();
 
-            if (Equipe.find({_id: this._id}).fetch()[0].team.includes(event.target.selectedOptions[0].value)) {
-                Equipe.update({_id: this._id}, {
-                    $pull: {team: event.target.selectedOptions[0].value}
-                });
-            } else {
-                Equipe.update({_id: this._id}, {
-                    $push: {team: event.target.selectedOptions[0].value}
-                });
+            if (event.target.value !== "") {
+                if (Equipe.findOne({_id: event.target.id}).team.includes(event.target.value)) {
+                    Equipe.update({_id: event.target.id}, {
+                        $pull: {team: event.target.value}
+                    });
+                } else {
+                    Equipe.update({_id: event.target.id}, {
+                        $push: {team: event.target.value}
+                    });
+                }
             }
         },
         'change .js-selectParcours': function (event) {
