@@ -82,6 +82,9 @@ Meteor.publish("chasseList", function () {
     else
         return this.ready();
 });
+Meteor.publish("parcoursAllList", function () {
+    return Parcours.find();
+});
 
 Meteor.publish("parcoursList", function (id) {
     return Parcours.find({chasseId: id});
