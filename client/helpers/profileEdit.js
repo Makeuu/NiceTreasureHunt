@@ -1,10 +1,12 @@
 Template.profileEdit.helpers({
     profileUser() {
-        return {
-            email: Meteor.user().emails[0].address,
-            username: Meteor.user().username,
-            color: Meteor.user().color
-        }
+        try {
+            return {
+                email: Meteor.user().emails[0].address,
+                username: Meteor.user().username,
+                color: Meteor.user().color
+            }
+        } catch (e) {}
     }
 });
 

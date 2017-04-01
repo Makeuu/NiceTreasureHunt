@@ -1,3 +1,43 @@
 <template name="seeEtapes">
+    {{#each e in etapes}}
+        <div class="w3-card-2 w3-margin-bottom">
+            {{#if isActivated e}}
+                <header class="w3-container w3-padding-4 w3-teal">
+                    {{e.nom}}
+                    <div class="w3-right">
+                        {{e.position}}
+                    </div>
+                </header>
 
+                <div class="w3-container">
+                    {{>patron e=e}}
+                </div>
+            {{else}}
+                <div class="w3-container w3-light-gray w3-center">
+                    Répondre à la précédente étape !
+                </div>
+            {{/if}}
+        </div>
+    {{/each}}
+</template>
+
+<template name="patron">
+    {{#if isQuestion e.type}}
+        {{>question e=e}}
+    {{/if}}
+</template>
+
+<template name="question">
+    <div>
+        <h5><strong>Question :</strong> {{e.question}}</h5>
+    </div>
+    <div class="w3-container w3-margin-bottom">
+
+        {{#if isCorrect e}}
+            <input {{getAnswer e}} disabled>
+        {{else}}
+            <input {{getAnswer e}} placeholder="Réponse" name="response" >
+            <button class="w3-btn w3-teal w3-right js-ansQuestion" id="{{e._id}}">Répondre</button>
+        {{/if}}
+    </div>
 </template>

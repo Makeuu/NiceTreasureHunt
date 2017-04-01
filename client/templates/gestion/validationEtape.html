@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<template name="validateEtape">
+    {{#each le in listEquipe}}
+        {{#each lv in listValidate le.validate}}
+            {{#with oneEtape lv.idEtape}}
+                <div class="w3-card-4 w3-margin-bottom">
+                    <header class="w3-container w3-teal">
+                        <h5><strong>Equipe :</strong> {{le.nom}}</h5>
+                    </header>
+                    <div class="w3-container w3-padding-bottom">
+                        <p><strong>Question :</strong> {{question}}</p>
+                        <p><strong>Réponse équipe :</strong> {{lv.reponse}}</p>
+                        <p><strong>Réponse Attendu :</strong> {{reponse}}</p>
+                    </div>
+                    <footer class="w3-containerw3-padding-bottom">
+                        <button class="w3-btn w3-red js-refuseEtape" name="{{le._id}}" id="{{_id}}"><i class="fa fa-minus fa-lg"></i></button>
+                        <button class="w3-btn w3-green w3-right js-acceptEtape" name="{{le._id}}" id="{{_id}}"><i class="fa fa-check fa-lg"></i></button>
+                    </footer>
+                </div>
+            {{/with}}
+        {{/each}}
+    {{/each}}
+</template>

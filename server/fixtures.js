@@ -42,14 +42,6 @@ if (Meteor.users.find().count() === 0) {
             role: "user"
         }
     });
-    const eq1 = Equipe.insert({
-        nom: "test du nom",
-        team: [user1, user2]
-    });
-    const eq2 = Equipe.insert({
-        nom: "le second ",
-        team: []
-    });
 
     const idC1 = Chasse.insert({
         nom: "Chasse à Evry"
@@ -57,17 +49,17 @@ if (Meteor.users.find().count() === 0) {
     Chasse.insert({
         nom: "Chasse à Nice"
     });
-
     const idP1 = Parcours.insert({
         nom: "Parcours 1",
-        chasseId: [idC1]
+        chasseId: [idC1],
+        parcous: ""
     });
-    Parcours.insert({
+    const idP2 = Parcours.insert({
         nom: "Parcours 2",
-        chasseId: [idC1]
+        chasseId: [idC1],
+        parcous: ""
     });
-
-    Etapes.insert({
+    const idE1 = Etapes.insert({
         nom: "Pigeon",
         type: "Question",
         question: "Quel est la différence entre un pigeon ?",
@@ -76,20 +68,50 @@ if (Meteor.users.find().count() === 0) {
         parcoursId: [idP1]
     });
     Etapes.insert({
-        nom: "Saut",
+        nom: "Voix",
         type: "Question",
-        question: "Quel est la différence entre un pigeon ?",
-        reponse: "Il a les deux pattes identiques, surtout la gauche.",
+        question: "Quel est la différence entre un tunnel ?",
+        reponse: "Il a les deux routes identiques, surtout la gauche.",
         position: 2,
         parcoursId: [idP1]
     });
+    Etapes.insert({
+        nom: "Saut",
+        type: "Question",
+        question: "Quel est la différence entre un sauteur ?",
+        reponse: "Il a les deux jambes identiques, surtout la gauche.",
+        position: 2,
+        parcoursId: [idP2]
+    });
+    const prams = {valide:0, reponse:"bonjour"};
+    var validate ={};
+    validate[idE1] = prams;
+    const eq1 = Equipe.insert({
+        nom: "test du nom",
+        team: [user1, user2],
+        parcours: [idP1],
+        validate: validate
+    });
+    const eq2 = Equipe.insert({
+        nom: "le second ",
+        team: [],
+        parcours: [idP2],
+        validate: {}
+    });
 
     Message.insert({
-      "equipeID" : eq1,
-      "date": new Date(),
-      "from": "Organisateur",
-      "msg" : "First Message to test",
-      "type": 0
+        "equipeID" : eq1,
+        "date": new Date(),
+        "from": "Organisateur",
+        "msg" : "First Message to test",
+        "type": 0
+    });
+    Message.insert({
+        "equipeID" : eq1,
+        "date": new Date(),
+        "from": "Organisateur",
+        "msg" : "Ok, I saw it",
+        "type": 1
     });
     var msgID = Message.insert({
       "equipeID" : eq1,

@@ -89,6 +89,9 @@ Template.userMessage.events({
 
 Template.userMessage.onRendered(function () {
     resizePanel();
+    window.onresize = function () {
+        resizePanel();
+    };
     element = document.querySelector("#panelMessage");
     element.scrollTop = element.scrollHeight;
 });
@@ -116,19 +119,18 @@ function resizePanel() {
     const h = window.innerHeight-40;
     var newDimW = 0;
     var newDimH = 0;
-    console.log("panel 1 ", w,h,newDimW, newDimH);
+
     if(w <= 600) {
         newDimW = w;
-        newDimH = h;
+        newDimH = h-88;
     } else {
-        newDimW = w/3 -10;
-        newDimH = h-65.733;
+        newDimW = w/2;
+        newDimH = h-69;
     }
-    console.log("panel 2", w,h,newDimW, newDimH);
+
 
     document.querySelector(".js-userPanel").style.width = newDimW + "px";
     document.querySelector(".js-userPanel").style.height = newDimH + "px";
-    console.log("panel Rezised");
 }
 
 Template.messagePanel.helpers({

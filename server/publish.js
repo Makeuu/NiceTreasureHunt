@@ -40,6 +40,13 @@ Meteor.publish("equipeList", function () {
 
     this.ready();
 });
+Meteor.publish("findEquipe", function () {
+    if (this.userId) {
+        return Equipe.find({team: this.userId});
+    }
+
+    this.ready();
+});
 
 Meteor.publish("chatRoomList", function () {
     if (this.userId) {
@@ -93,6 +100,12 @@ Meteor.publish("parcoursList", function (id) {
 Meteor.publish("etapesList", function (id) {
     if (this.userId)
         return Etapes.find({parcoursId: id},{sort: {position: 1}});
+    else
+        return this.ready();
+});
+Meteor.publish("etapesAllList", function () {
+    if (this.userId)
+        return Etapes.find();
     else
         return this.ready();
 });

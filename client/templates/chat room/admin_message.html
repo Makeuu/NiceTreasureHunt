@@ -35,8 +35,7 @@
     <a href="{{ pathFor 'adminMessage' }}/{{ _id }}"
        style="text-decoration: none">
     <li class="w3-padding-16 w3-white w3-hover-red">
-        <button class="w3-button w3-xlarge w3-right w3-text-black w3-hover-red"
-                style="background-color: rgba(0, 0, 0, 0)">></button>
+        <span class="w3-xlarge w3-right w3-padding-right">></span>
         <span class="w3-large">{{ nom }}</span><br>
         {{#if new }}<span class="w3-badge w3-red w3-left">!</span> {{/if}}
         <span>{{lastMessage}}</span>
@@ -57,17 +56,17 @@
 
 <template name="userMessage">
     <div class="w3-row">
-        <div class="w3-card w3-border-teal" id="panelMessage"
-             style="min-height: 500px; max-height: 500px; overflow-y: auto;">
+        <div class="w3-card w3-border-teal js-userPanel" id="panelMessage"
+             style="overflow-y: auto;">
             {{#each messages }}
                 {{> messagePanel }}
             {{/each}}
         </div>
         <div class="w3-row">
             <input id="UCR_Input" type="text"
-                   class="w3-col m11 l10 w3-input  w3-border-bottom w3-border-left w3-border-teal w3-border-right"/>
+                   class="w3-col m10 w3-input w3-border-bottom w3-border-left w3-border-teal w3-border-right"/>
             <span id="UCR_Submit"
-                  class="w3-button w3-teal w3-right w3-hover-text-teal w3-hover-white w3-col m1 l2">
+                  class="w3-button w3-teal w3-right w3-hover-text-teal w3-hover-white w3-col m2">
                 <i class="fa fa-chevron-circle-right fa-lg" aria-hidden="true"></i>
             </span>
         </div>
