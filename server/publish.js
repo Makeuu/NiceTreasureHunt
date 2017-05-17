@@ -37,7 +37,6 @@ Meteor.publish("equipeList", function () {
     if (this.userId) {
         return Equipe.find();
     }
-
     this.ready();
 });
 Meteor.publish("findEquipe", function () {

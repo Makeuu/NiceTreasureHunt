@@ -34,7 +34,8 @@ Template.validateEtape.events({
         const idEquipe = event.target.name;
         const idEtape = event.target.id;
 
-        var validate = Equipe.findOne({_id: idEquipe}).validate;
+        var equip = Equipe.findOne({_id: idEquipe});
+        var validate = equip.validate;
         validate[idEtape].valide = 1;
 
         Equipe.update({_id: idEquipe}, {$set: {validate: validate}});
